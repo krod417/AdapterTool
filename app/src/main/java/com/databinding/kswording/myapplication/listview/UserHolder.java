@@ -5,8 +5,9 @@ import android.view.View;
 
 import com.databinding.kswording.myapplication.BR;
 import com.databinding.kswording.myapplication.R;
+import com.databinding.kswording.myapplication.User;
 import com.databinding.kswording.myapplication.databinding.ListItemBinding;
-import com.databinding.kswording.myapplication.listview.base.DataBindViewHolder;
+import com.krod.adapter.DataBindViewHolder;
 
 /**
  * Created by kswording on 15-10-26.

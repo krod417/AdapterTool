@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 
 import com.databinding.kswording.myapplication.BR;
 import com.databinding.kswording.myapplication.R;
+import com.databinding.kswording.myapplication.User;
 
 /**
  * Created by kswording on 15-10-20.

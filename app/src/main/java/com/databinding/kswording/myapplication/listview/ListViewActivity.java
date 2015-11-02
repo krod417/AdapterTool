@@ -6,6 +6,7 @@ import android.os.Handler;
 
 import com.databinding.kswording.myapplication.BaseActivity;
 import com.databinding.kswording.myapplication.R;
+import com.databinding.kswording.myapplication.User;
 import com.databinding.kswording.myapplication.databinding.ActivityListviewBinding;
 
 import java.util.ArrayList;
@@ -19,13 +20,12 @@ public class ListViewActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding =
-                DataBindingUtil.setContentView(this, R.layout.activity_listview);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_listview);
         ArrayList<Class> classList = new ArrayList();
-        classList.add(UserModeHolder.class);
-        ArrayList<UserModeHolder> dataList = new ArrayList();
+        classList.add(UserHolder.class);
+        ArrayList<UserHolder> dataList = new ArrayList();
         for (int i = 0; i < 30; i ++) {
-            dataList.add(new UserModeHolder(new User("name" + i, "friend" + i)));
+            dataList.add(new UserHolder(new User("name" + i, "friend" + i)));
         }
 
         binding.setHoldelist(classList);

@@ -18,6 +18,7 @@ package com.krod.adapter;
 
 import android.content.Context;
 import android.databinding.BindingAdapter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -103,6 +104,7 @@ public class ModelListAdapter extends BaseListAdapter<BaseViewHolder> {
 
     @BindingAdapter({"bind:data", "bind:holder"})
     public static void loadadapter(ListView view, ArrayList<BaseViewHolder> data, ArrayList<Class> holder) {
+        Log.e("TAGGGG", "TEST11111");
         ModelListAdapter adapter;
         if (view.getAdapter() == null) {
             ViewManager vm = ViewManager.begin();

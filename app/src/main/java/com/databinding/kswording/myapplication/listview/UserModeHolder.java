@@ -5,7 +5,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.databinding.kswording.myapplication.R;
-import com.databinding.kswording.myapplication.listview.base.BaseViewHolder;
+import com.databinding.kswording.myapplication.User;
+import com.krod.adapter.BaseViewHolder;
 
 /**
  * Created by kswording on 15-10-26.
