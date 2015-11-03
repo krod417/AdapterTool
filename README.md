@@ -15,8 +15,8 @@ dependencies {
       afterViewCreated －－初始化item以及添加点击事件
       itemModeId 返回数据模型的BR值
   3.源生实现
-      ArrayList<BaseViewHolder> data－－通过BaseViewHolder封装的数据模型
-      ArrayList<Class> holder;－－对应不同item的BaseViewHolder类
+    ArrayList<BaseViewHolder> data－－通过BaseViewHolder封装的数据模型
+    ArrayList<Class> holder;－－对应不同item的BaseViewHolder类
       ViewManager vm = ViewManager.begin();
             for (Class hold : holder) {
                 vm.addModel(hold);
