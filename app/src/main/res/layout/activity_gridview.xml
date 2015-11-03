@@ -1,0 +1,36 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.databinding.kswording.myapplication.listview.GridViewActivity" />
+
+        <import type="java.util.ArrayList" />
+
+        <variable
+            name="holdelist"
+            type="ArrayList" />
+
+        <variable
+            name="datalist"
+            type="ArrayList" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <GridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="2"
+            app:data="@{datalist}"
+            app:holder="@{holdelist}"></GridView>
+    </LinearLayout>
+</layout>
+
+

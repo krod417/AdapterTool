@@ -6,7 +6,7 @@ import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.AbsListView;
 
 import com.krod.adapter.BaseViewHolder;
 import com.krod.adapter.ModelAdapter;
@@ -40,7 +40,7 @@ public abstract class DataBindViewHolder<T, B extends ViewDataBinding> extends B
     }
 
     @BindingAdapter({"bind:data", "bind:holder"})
-    public static void loadadapter(ListView view, ArrayList<BaseViewHolder> data, ArrayList<Class> holder) {
+    public static void loadadapter(AbsListView view, ArrayList<BaseViewHolder> data, ArrayList<Class> holder) {
         ModelAdapter adapter;
         if (view.getAdapter() == null) {
             ViewManager vm = ViewManager.begin();
