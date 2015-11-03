@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 chenupt
+ * Copyright 2015 krod
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ package com.krod.adapter;
 import java.util.HashMap;
 
 /**
- * Created by chenupt@gmail.com on 1/7/15.
+ * Created by wj19901117@gmail.com on 2015/10/28.
  * Description : Collect all model view and build a target view manager.
  */
 public class ViewManager {

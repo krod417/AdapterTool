@@ -7,7 +7,7 @@ import com.databinding.kswording.myapplication.BR;
 import com.databinding.kswording.myapplication.R;
 import com.databinding.kswording.myapplication.User;
 import com.databinding.kswording.myapplication.databinding.ListItemBinding;
-import com.krod.adapter.DataBindViewHolder;
+import com.krod.databinding.adapter.DataBindViewHolder;
 
 /**
  * Created by kswording on 15-10-26.

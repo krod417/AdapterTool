@@ -20,7 +20,7 @@ package com.krod.adapter;
 import android.support.v4.app.Fragment;
 
 /**
- * Created by chenupt@gmail.com on 2014/8/13.
+ * Created by wj19901117@gmail.com on 2015/10/26.
  *
  */
 public class ItemEntityUtil {

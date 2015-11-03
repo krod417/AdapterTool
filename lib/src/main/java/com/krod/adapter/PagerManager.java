@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 chenupt
+ * Copyright 2015 krod
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ import java.util.List;
 
 
 /**
- * Created by chenupt@gmail.com on 2014/8/9.
+ * Created by wj19901117@gmail.com on 2015/10/28.
  * Description : Manage fragments to be used by adapter.
  */
 public class PagerManager {

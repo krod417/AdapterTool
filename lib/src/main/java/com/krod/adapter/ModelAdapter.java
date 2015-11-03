@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 chenupt
+ * Copyright 2015 krod
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,26 +17,22 @@
 package com.krod.adapter;
 
 import android.content.Context;
-import android.databinding.BindingAdapter;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 
 /**
- * Created by chenupt@gmail.com on 2014/8/8.
+ * Created by wj19901117@gmail.com on 2015/10/28.
  * Description : Simple base list adapter for getting multiple item views in list.
  */
-public class ModelListAdapter extends BaseListAdapter<BaseViewHolder> {
+public class ModelAdapter extends BaseListAdapter<BaseViewHolder> {
 
     public ViewManager viewManager;
 
-    public ModelListAdapter(Context context, ViewManager manager) {
+    public ModelAdapter(Context context, ViewManager manager) {
         super(context);
         this.viewManager = manager;
     }
@@ -102,23 +98,4 @@ public class ModelListAdapter extends BaseListAdapter<BaseViewHolder> {
         return null;
     }
 
-    @BindingAdapter({"bind:data", "bind:holder"})
-    public static void loadadapter(ListView view, ArrayList<BaseViewHolder> data, ArrayList<Class> holder) {
-        Log.e("TAGGGG", "TEST11111");
-        ModelListAdapter adapter;
-        if (view.getAdapter() == null) {
-            ViewManager vm = ViewManager.begin();
-            for (Class hold : holder) {
-                vm.addModel(hold);
-            }
-            adapter = new ModelListAdapter(view.getContext(), vm);
-            view.setAdapter(adapter);
-            adapter.setList(data);
-        } else {
-            adapter = (ModelListAdapter) view.getAdapter();
-            adapter.addList(data);
-            adapter.notifyDataSetChanged();
-        }
-
-    }
 }
