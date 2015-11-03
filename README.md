@@ -1,11 +1,14 @@
 # AdapterTool
 The new universal tool adapter,Reference chenupt@gmail.com。
 # 添加依赖
+```
 dependencies {
     compile 'com.krod.adapter:AdapterTool:1.1.0'
-}  
+}
+```
 
 # ListView+GridView的通用适配器——ModelAdapter
+```
   1.实现BaseViewHolder抽象类
       itemViewId －－返回item的布局文件id
       afterViewCreated －－初始化item以及添加点击事件
@@ -51,7 +54,7 @@ dependencies {
             ></ListView>
       </LinearLayout>
       </layout>
-
+```
 # License
 
 Copyright 2015 krod
