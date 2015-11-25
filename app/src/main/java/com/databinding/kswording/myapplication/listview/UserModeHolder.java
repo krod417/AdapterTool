@@ -15,6 +15,9 @@ public class UserModeHolder extends BaseViewHolder<User> {
 
     public TextView name;
 
+    public UserModeHolder() {
+        super();
+    }
     public UserModeHolder(User user) {
         super(user);
     }

@@ -20,6 +20,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,7 +32,7 @@ import java.util.List;
 public class ModelAdapter extends BaseListAdapter<BaseViewHolder> {
 
     public ViewManager viewManager;
-
+    public BaseViewHolder nullHolder;
     public ModelAdapter(Context context, ViewManager manager) {
         super(context);
         this.viewManager = manager;
@@ -98,4 +99,30 @@ public class ModelAdapter extends BaseListAdapter<BaseViewHolder> {
         return null;
     }
 
+    @Override
+    public void setList(List<? extends BaseViewHolder> list) {
+        super.setList(list);
+        if (list == null || list.size() <= 0) {
+            if (nullHolder != null) {
+                addItem(nullHolder);
+            }
+        }
+    }
+
+    public <T> void setList(Class<? extends BaseViewHolder> c, ArrayList<T> list) {
+        setList(AdapterUtil.setList(c, list));
+    }
+
+    public <T> void addList(Class<? extends BaseViewHolder> c, ArrayList<T> list) {
+        super.addList(AdapterUtil.setList(c, list));
+    }
+
+    public void setNullItem(BaseViewHolder holder) {
+        nullHolder = holder;
+    }
+
+    public void showNetWorkError(BaseViewHolder holder) {
+        clearList();
+        addItem(holder);
+    }
 }

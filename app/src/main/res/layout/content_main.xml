@@ -37,5 +37,23 @@
             android:layout_height="45dp"
             android:text="gridView"
             android:onClick="@{main.goGrid}" />
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/gridview"
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="recycler"
+            android:onClick="@{main.goRecycler}" />
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/recycler"
+            android:id="@+id/cursor"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="cursor"
+            android:onClick="@{main.goCursor}" />
 </RelativeLayout>
 </layout>

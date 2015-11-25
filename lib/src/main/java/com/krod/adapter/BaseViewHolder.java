@@ -64,7 +64,14 @@ public abstract class BaseViewHolder<T> implements Serializable {
      */
     private String tag = "";
 
+    public BaseViewHolder() {
+        super();
+        this.tag = "";
+        this.timestamp = System.currentTimeMillis();
+    }
+
     public BaseViewHolder(T t) {
+        super();
         this.content = t;
         this.tag = "";
         this.timestamp = System.currentTimeMillis();
@@ -163,8 +170,8 @@ public abstract class BaseViewHolder<T> implements Serializable {
 
     public void bindData(int position, BaseViewHolder<T> model) {
         // Singleton depends on view's model saved last time.
-        // If your item view does not extend from BaseItemView, you should check the cache timestamp if you need.
-        if(!ItemEntityUtil.checkCache(this, model)){
+        // If your item view does not extend from BaseViewHolder, you should check the cache timestamp if you need.
+        if (!AdapterUtil.checkCache(this, model)) {
             setModel(model.content);
             setViewPosition(position);
             bindView();

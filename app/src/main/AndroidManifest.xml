@@ -11,6 +11,8 @@
 
         <activity android:name=".listview.ListViewActivity"></activity>
         <activity android:name=".listview.GridViewActivity"></activity>
+        <activity android:name=".listview.CursorActivity"></activity>
+        <activity android:name=".listview.RecyclerViewActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main2"

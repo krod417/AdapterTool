@@ -33,7 +33,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
     protected Context context;
     
     public BaseListAdapter(Context context) {
-        list = new ArrayList<T>();
+        list = new ArrayList<>();
         this.context = context;
     }
 
@@ -53,43 +53,23 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
     }
 
 
-    public void setList(List<T> list) {
-        this.list = list;
+    public void setList(List<? extends T> list) {
+        this.list.clear();
+        if (list != null) {
+            this.list.addAll(list);
+        }
     }
 
     public List<T> getList(){
         return list;
     }
 
-    public void addList(List<T> list){
+    public void addList(List<? extends T> list) {
         if(list != null){
             this.list.addAll(list);
         }
     }
 
-    public void addListToHead(List<T> list){
-        if(list != null){
-            this.list.addAll(0, list);
-        }
-    }
-
-    public void removeList(List<T> list){
-        this.list.removeAll(list);
-    }
-
-    public T getFirstItem(){
-        if(list != null && list.size() > 0){
-            return list.get(0);
-        }
-        return null;
-    }
-
-    public T getLastItem(){
-        if(list != null && list.size() > 0){
-            return list.get(list.size() - 1);
-        }
-        return null;
-    }
 
     public void addItem(T item){
         this.list.add(item);
@@ -98,15 +78,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
     public void clearList(){
         this.list.clear();
     }
-    
-    public void remove(int position){
-    	this.list.remove(position);
-    }
 
-    public void remove(T item){
-        this.list.remove(item);
-    }
-    
     public Context getContext(){
     	return context;
     }

@@ -24,7 +24,7 @@ public class ListViewActivity extends BaseActivity {
         ArrayList<Class> classList = new ArrayList();
         classList.add(UserHolder.class);
         ArrayList<UserHolder> dataList = new ArrayList();
-        for (int i = 0; i < 30; i ++) {
+        for (int i = 0; i < 100; i++) {
             dataList.add(new UserHolder(new User("name" + i, "friend" + i)));
         }
 
@@ -34,7 +34,7 @@ public class ListViewActivity extends BaseActivity {
             @Override
             public void run() {
                 ArrayList<UserHolder> dataList = new ArrayList();
-                for (int i = 0; i < 10; i ++) {
+                for (int i = 0; i < 30; i++) {
                     dataList.add(new UserHolder(new User("name" + i, "friendSS" + i)));
                 }
                 binding.setDatalist(dataList);

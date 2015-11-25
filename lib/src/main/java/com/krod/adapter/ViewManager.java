@@ -29,12 +29,13 @@ public class ViewManager {
     }
 
     public HashMap<Class<? extends BaseViewHolder>, Integer> viewMap;  // view class - > view type
-
+    public HashMap<Integer, Class<? extends BaseViewHolder>> typeMap;  // view type - > view class
     public HashMap<Integer, Boolean> pinnedMap;// view type index - > pinned
 
 
     public ViewManager() {
         viewMap = new HashMap<Class<? extends BaseViewHolder>, Integer>();
+        typeMap = new HashMap<>();
         pinnedMap = new HashMap<Integer, Boolean>();
     }
 
@@ -51,6 +52,7 @@ public class ViewManager {
         if (!viewMap.containsKey(viewClass)) {
             int viewType = viewMap.size() - 1;
             viewMap.put(viewClass, viewType);
+            typeMap.put(viewType, viewClass);
             pinnedMap.put(viewType, isPinned);
         }
         return this;
