@@ -13,6 +13,10 @@
         <activity android:name=".listview.GridViewActivity"></activity>
         <activity android:name=".listview.CursorActivity"></activity>
         <activity android:name=".listview.RecyclerViewActivity"></activity>
+        <activity android:name=".listview.TypeCursorActivity"></activity>
+        <activity android:name=".listview.ModeFragmentActivity"></activity>
+        <activity android:name=".listview.ExpandableActivity"></activity>
+        <activity android:name=".listview.PinnedListActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main2"

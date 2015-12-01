@@ -2,12 +2,17 @@ package com.databinding.kswording.myapplication.listview;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.os.Handler;
+import android.widget.Toast;
 
 import com.databinding.kswording.myapplication.BaseActivity;
 import com.databinding.kswording.myapplication.R;
 import com.databinding.kswording.myapplication.User;
 import com.databinding.kswording.myapplication.databinding.ActivityListviewBinding;
+import com.databinding.kswording.myapplication.listview.item.EmptyItemHolder;
+import com.databinding.kswording.myapplication.listview.item.NetworkErroHolder;
+import com.databinding.kswording.myapplication.listview.item.UserModeHolder;
+import com.krod.adapter.ModelAdapter;
+import com.krod.adapter.ViewManager;
 
 import java.util.ArrayList;
 
@@ -16,30 +21,42 @@ import java.util.ArrayList;
  */
 public class ListViewActivity extends BaseActivity {
     public ActivityListviewBinding binding;
+    private ModelAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_listview);
-        ArrayList<Class> classList = new ArrayList();
-        classList.add(UserHolder.class);
-        ArrayList<UserHolder> dataList = new ArrayList();
+
+        final ArrayList<UserModeHolder> dataList = new ArrayList();
         for (int i = 0; i < 100; i++) {
-            dataList.add(new UserHolder(new User("name" + i, "friend" + i)));
+            dataList.add(new UserModeHolder(new User("name" + i, "friend" + i)));
         }
 
-        binding.setHoldelist(classList);
-        binding.setDatalist(dataList);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ArrayList<UserHolder> dataList = new ArrayList();
-                for (int i = 0; i < 30; i++) {
-                    dataList.add(new UserHolder(new User("name" + i, "friendSS" + i)));
-                }
-                binding.setDatalist(dataList);
-            }
-        }, 4000);
+        binding.listview.setAdapter(adapter = new ModelAdapter(this, ViewManager.begin().
+                addModel(UserModeHolder.class).addModel(NetworkErroHolder.class).
+                addModel(EmptyItemHolder.class)));
+
+        adapter.setList(dataList);
+        Toast.makeText(ListViewActivity.this, "请稍等,看下没有数据的情况", Toast.LENGTH_LONG).show();
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                adapter.setNullItem(new EmptyItemHolder());//必须设置在setlist之前
+//                adapter.setList(new ArrayList<BaseViewHolder>());
+//                adapter.notifyDataSetChanged();
+//                Toast.makeText(ListViewActivity.this, "请稍等,看下没有网络的情况",Toast.LENGTH_LONG).show();
+//            }
+//        }, 4000);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                adapter.showAloneItem(new NetworkErroHolder());
+//                adapter.notifyDataSetChanged();
+//
+//            }
+//        }, 8000);
+
     }
 
 

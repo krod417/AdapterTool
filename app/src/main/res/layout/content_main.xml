@@ -14,11 +14,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/activity_main2"
         tools:context="com.databinding.kswording.myapplication.MainActivity">
 
@@ -32,15 +33,15 @@
         <Button
             android:layout_marginTop="15dp"
             android:layout_below="@+id/listview"
-            android:id="@+id/gridview"
+            android:id="@+id/gridAndDatabinding"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:text="gridView"
+            android:text="grid And Databinding"
             android:onClick="@{main.goGrid}" />
 
         <Button
             android:layout_marginTop="15dp"
-            android:layout_below="@+id/gridview"
+            android:layout_below="@+id/gridAndDatabinding"
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -55,5 +56,41 @@
             android:layout_height="45dp"
             android:text="cursor"
             android:onClick="@{main.goCursor}" />
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/cursor"
+            android:id="@+id/typecursor"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="typecursor"
+            android:onClick="@{main.goTypeCursor}" />
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/typecursor"
+            android:id="@+id/expandable"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="expandableListView"
+            android:onClick="@{main.goExpand}" />
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/expandable"
+            android:id="@+id/fragmentadapter"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="fragmentAdapter"
+            android:onClick="@{main.gofragment}" />
+
+        <Button
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/fragmentadapter"
+            android:id="@+id/pinned"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="pinned"
+            android:onClick="@{main.goPinned}" />
 </RelativeLayout>
 </layout>

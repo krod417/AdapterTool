@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * RecyclerView的适配器，用于该适配器的样式都需要加默认构造函数
  * Created by jian.wj on 15-11-25.
  */
 public class ModeRecyclerAdapter extends RecyclerView.Adapter<RecyclerHolder> {

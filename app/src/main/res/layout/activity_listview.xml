@@ -1,12 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <import type="com.databinding.kswording.myapplication.listview.ListViewActivity" />
-        <import type="java.util.ArrayList" />
-        <variable name="holdelist" type="ArrayList" />
-        <variable name="datalist" type="ArrayList" />
-    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,8 +13,6 @@
             android:listSelector="@android:color/transparent"
             android:divider="@null"
             android:dividerHeight="0.0dp"
-            app:data="@{datalist}"
-            app:holder="@{holdelist}"
             ></ListView>
     </LinearLayout>
 </layout>

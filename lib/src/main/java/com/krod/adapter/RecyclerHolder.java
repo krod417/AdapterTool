@@ -5,6 +5,7 @@ import android.view.View;
 import static android.support.v7.widget.RecyclerView.ViewHolder;
 
 /**
+ * RecyclerView的内部类
  * Created by jian.wj on 15-11-25.
  */
 public class RecyclerHolder extends ViewHolder {

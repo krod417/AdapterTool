@@ -21,6 +21,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 /**
+ * Viewpage的适配器
  * Created by wj19901117@gmail.com on 2015/10/28.
  * Description : ViewPager adapter extends FragmentPagerAdapter
  */

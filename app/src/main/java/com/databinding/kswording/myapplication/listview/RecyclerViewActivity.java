@@ -2,12 +2,13 @@ package com.databinding.kswording.myapplication.listview;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.databinding.kswording.myapplication.BaseActivity;
 import com.databinding.kswording.myapplication.R;
 import com.databinding.kswording.myapplication.User;
 import com.databinding.kswording.myapplication.databinding.ActivityRecyclerviewBinding;
+import com.databinding.kswording.myapplication.listview.item.UserModeHolder;
 import com.krod.adapter.ModeRecyclerAdapter;
 import com.krod.adapter.ViewManager;
 
@@ -23,7 +24,7 @@ public class RecyclerViewActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_recyclerview);
-        binding.listview.setLayoutManager(new GridLayoutManager(this, 4));
+        binding.listview.setLayoutManager(new LinearLayoutManager(this));
         ModeRecyclerAdapter adapter = new ModeRecyclerAdapter(this, ViewManager.begin().addModel(UserModeHolder.class));
         ArrayList<UserModeHolder> dataList = new ArrayList();
         for (int i = 0; i < 100; i++) {

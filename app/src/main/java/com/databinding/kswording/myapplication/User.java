@@ -38,4 +38,9 @@ public class User {
     public boolean isAdult() {
         return age >= 18;
     }
+
+    @Override
+    public String toString() {
+        return firstName;
+    }
 }

@@ -25,6 +25,7 @@ import java.util.List;
 
 
 /**
+ * ViewPage支持Fragment的管理类
  * Created by wj19901117@gmail.com on 2015/10/28.
  * Description : Manage fragments to be used by adapter.
  */

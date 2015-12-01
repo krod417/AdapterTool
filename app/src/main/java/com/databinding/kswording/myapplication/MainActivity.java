@@ -8,8 +8,13 @@ import android.view.View;
 import com.com.example.testsql.HermesSqlHelper;
 import com.databinding.kswording.myapplication.databinding.ActivityMainBinding;
 import com.databinding.kswording.myapplication.listview.CursorActivity;
+import com.databinding.kswording.myapplication.listview.ExpandableActivity;
 import com.databinding.kswording.myapplication.listview.GridViewActivity;
+import com.databinding.kswording.myapplication.listview.ListViewActivity;
+import com.databinding.kswording.myapplication.listview.ModeFragmentActivity;
+import com.databinding.kswording.myapplication.listview.PinnedListActivity;
 import com.databinding.kswording.myapplication.listview.RecyclerViewActivity;
+import com.databinding.kswording.myapplication.listview.TypeCursorActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -70,7 +75,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void goList(View view) {
-        startActivity(new Intent(this, CursorActivity.class));
+        startActivity(new Intent(this, ListViewActivity.class));
     }
 
     public void goGrid(View view) {
@@ -83,6 +88,22 @@ public class MainActivity extends BaseActivity {
 
     public void goRecycler(View view) {
         startActivity(new Intent(this, RecyclerViewActivity.class));
+    }
+
+    public void goExpand(View view) {
+        startActivity(new Intent(this, ExpandableActivity.class));
+    }
+
+    public void gofragment(View view) {
+        startActivity(new Intent(this, ModeFragmentActivity.class));
+    }
+
+    public void goTypeCursor(View view) {
+        startActivity(new Intent(this, TypeCursorActivity.class));
+    }
+
+    public void goPinned(View view) {
+        startActivity(new Intent(this, PinnedListActivity.class));
     }
 
 }

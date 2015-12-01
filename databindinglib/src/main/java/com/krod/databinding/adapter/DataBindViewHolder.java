@@ -34,8 +34,8 @@ public abstract class DataBindViewHolder<T, B extends ViewDataBinding> extends B
     public abstract int itemModeId();
 
     @Override
-    public void bindView() {
-        binding.setVariable(itemModeId(), content);
+    public void bindView(T t) {
+        binding.setVariable(itemModeId(), t);
         binding.executePendingBindings();
     }
 

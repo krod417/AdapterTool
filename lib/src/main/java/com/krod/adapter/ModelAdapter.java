@@ -26,6 +26,7 @@ import java.util.List;
 
 
 /**
+ * 支持AbsListView的适配，其中可以设置null数据的item，以及单独item（比如网络加载失败展示的界面）
  * Created by wj19901117@gmail.com on 2015/10/28.
  * Description : Simple base list adapter for getting multiple item views in list.
  */
@@ -45,7 +46,7 @@ public class ModelAdapter extends BaseListAdapter<BaseViewHolder> {
             viewHolder = getItem(i);
             view = viewHolder.onCreateView(context,viewGroup);
             view.setTag(viewHolder);
-        }else{
+        } else {
             viewHolder = (BaseViewHolder)view.getTag();
         }
         viewHolder.bindData(i, getItem(i));
@@ -99,6 +100,11 @@ public class ModelAdapter extends BaseListAdapter<BaseViewHolder> {
         return null;
     }
 
+    /**
+     * 设置样式跟内容绑定的数据列表
+     *
+     * @param list
+     */
     @Override
     public void setList(List<? extends BaseViewHolder> list) {
         super.setList(list);
@@ -109,19 +115,40 @@ public class ModelAdapter extends BaseListAdapter<BaseViewHolder> {
         }
     }
 
+    /**
+     * 设置数据内容
+     * @param c item样式
+     * @param list 内容数据列表
+     * @param <T> 内容类型
+     */
     public <T> void setList(Class<? extends BaseViewHolder> c, ArrayList<T> list) {
         setList(AdapterUtil.setList(c, list));
     }
 
+    /**
+     * 追加数据
+     * @param c item的样式
+     * @param list 内容数据列表
+     * @param <T> 内容类型
+     */
     public <T> void addList(Class<? extends BaseViewHolder> c, ArrayList<T> list) {
         super.addList(AdapterUtil.setList(c, list));
     }
 
+    /**
+     * 设置当没有数据时加载的item
+     * @param holder
+     */
     public void setNullItem(BaseViewHolder holder) {
         nullHolder = holder;
     }
 
-    public void showNetWorkError(BaseViewHolder holder) {
+    /**
+     * 设置单个样式的item，比如网络加载失败显示的样式
+     *
+     * @param holder
+     */
+    public void showAloneItem(BaseViewHolder holder) {
         clearList();
         addItem(holder);
     }

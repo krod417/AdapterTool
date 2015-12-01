@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 /**
+ * 将数据类型跟样式绑定起来
  * Created by jian.wj on 15-11-25.
  */
 public class AdapterUtil {

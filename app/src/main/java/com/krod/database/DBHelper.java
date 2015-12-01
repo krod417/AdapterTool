@@ -1,16 +1,17 @@
 package com.krod.database;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 public class DBHelper {
 
@@ -59,16 +60,50 @@ public class DBHelper {
         }
     }
 
+    public <T> boolean insertList(ArrayList<T> list) {
+        try {
+            int len = 0;
+            if (list != null && (len = list.size()) > 0) {
+                db.beginTransaction();
+                for (int i = 0; i < len; i++) {
+                    insert(list.get(i));
+                }
+                db.setTransactionSuccessful();
+                db.endTransaction();
+            }
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException("inser fail");
+        }
+    }
+
+    public <T> boolean updateList(ArrayList<T> list, String where) {
+        try {
+            int len = 0;
+            if (list != null && (len = list.size()) > 0) {
+                db.beginTransaction();
+                for (int i = 0; i < len; i++) {
+                    update(list.get(i), where);
+                }
+                db.setTransactionSuccessful();
+                db.endTransaction();
+            }
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException("update fail");
+        }
+    }
+
     public boolean insert(String table, ContentValues values) {
         long id = 0;
         try {
             checkAutoIncrement(table, values);
-            id = db.insert(table, null, values);
+            id = db.insertWithOnConflict(table, null, values, SQLiteDatabase.CONFLICT_REPLACE);
             if (id > 0 && changeManage != null) {
                 changeManage.insert(table);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException("insert fail");
         }
         return (id > 0);
     }
@@ -85,12 +120,12 @@ public class DBHelper {
         int id = 0;
         try {
             checkAutoIncrement(table, values);
-            id = db.update(table, values, where, null);
+            id = db.updateWithOnConflict(table, values, where, null, SQLiteDatabase.CONFLICT_REPLACE);
             if (id > 0 && changeManage != null) {
                 changeManage.update(table);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException("update fail");
         }
         return (id > 0);
     }
@@ -110,7 +145,7 @@ public class DBHelper {
                 return update(table, values, column.getName() + "='" + values.get(column.getName()) + "'");
             }
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            throw new RuntimeException("update reflection fail");
         }
         return false;
     }
@@ -201,8 +236,15 @@ public class DBHelper {
         Cursor cur = db.query(tableName, columns, where, null, null, null, orderby, limit);
         ArrayList<T> list = new ArrayList<T>();
         if (cur != null && cur.moveToFirst()) {
+            Constructor<T> constructor = null;
+            try {
+                constructor = c.getDeclaredConstructor();
+                constructor.setAccessible(true);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException("c Missing default constructor");
+            }
             while (!cur.isAfterLast()) {
-                list.add(curToObj(cur, c));
+                list.add(curToObj(constructor, cur, c));
                 cur.moveToNext();
             }
         }
@@ -220,10 +262,10 @@ public class DBHelper {
         return cur;
     }
 
-    public <T> T curToObj(Cursor cur, Class<T> c) {
+    public <T> T curToObj(Constructor<T> constructor, Cursor cur, Class<T> c) {
         T obj = null;
         try {
-            obj = c.newInstance();
+            obj = constructor.newInstance();
             HashMap<String, Column> fields = tables.get(c.getSimpleName()).columns;
             int size = fields.size();
             if (size > 0) {
@@ -336,7 +378,7 @@ public class DBHelper {
     /**
      * Inicia una transaccion
      *
-     * @param void
+     * @param
      * @return void.
      */
     public void startTransaction() {
@@ -346,7 +388,7 @@ public class DBHelper {
     /**
      * Finaliza una transaccion
      *
-     * @param void
+     * @param
      * @return void.
      */
     public void endTransaction() {
@@ -356,7 +398,7 @@ public class DBHelper {
     /**
      * Indica si estamos en una transaccion
      *
-     * @param void
+     * @param
      * @return Boolean True si hay una transaccion en curso, false en caso contrario.
      */
     public boolean inTransaction() {
@@ -366,7 +408,7 @@ public class DBHelper {
     /**
      * Confirma la ejecucion correcta de una transaccion
      *
-     * @param void
+     * @param
      * @return void.
      */
     public void successfulTransaction() {

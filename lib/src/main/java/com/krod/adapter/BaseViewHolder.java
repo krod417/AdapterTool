@@ -25,15 +25,27 @@ import android.view.ViewGroup;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 默认统一样式父类，包括RecyclerView，ListView，GridView
+ * Created by jian.wj on 15-11-25.
+ */
+
 public abstract class BaseViewHolder<T> implements Serializable {
 
     protected Context context;
     protected Fragment fragment;
+    /**
+     * 索引位置
+     */
     protected int viewPosition;
+    /**
+     * item的View
+     */
     protected View view;
     private long id;
     /**
      * The content you want to set for item.
+     * 数据内容
      */
     protected T content;
     /**
@@ -172,9 +184,8 @@ public abstract class BaseViewHolder<T> implements Serializable {
         // Singleton depends on view's model saved last time.
         // If your item view does not extend from BaseViewHolder, you should check the cache timestamp if you need.
         if (!AdapterUtil.checkCache(this, model)) {
-            setModel(model.content);
             setViewPosition(position);
-            bindView();
+            bindView(model.content);
         }
     }
 
@@ -198,6 +209,12 @@ public abstract class BaseViewHolder<T> implements Serializable {
        return LayoutInflater.from(context).inflate(itemViewId(), root, false);
     }
 
+    public View findViewById(int resId) {
+        if (view == null) {
+            throw new RuntimeException("view no create");
+        }
+        return view.findViewById(resId);
+    }
 
     public final View getView(){
         return view;
@@ -206,7 +223,20 @@ public abstract class BaseViewHolder<T> implements Serializable {
         list.add(this);
     }
 
+    /**
+     * 返回样式xml的Id
+     *
+     * @return
+     */
     public abstract int itemViewId();
+
+    /**
+     * 关联控件
+     */
     public abstract void afterViewCreated();
-    public abstract void bindView();
+
+    /**
+     * 控件与数据关联
+     */
+    public abstract void bindView(T t);
 }

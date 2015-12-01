@@ -3,19 +3,21 @@ package com.databinding.kswording.myapplication.listview;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.krod.adapter.CursorViewHolder;
+import com.databinding.kswording.myapplication.listview.item.CursorHodler;
+import com.databinding.kswording.myapplication.listview.item.TestCursorHodler;
+import com.krod.adapter.BaseViewHolder;
 import com.krod.adapter.ModeCursorAdapter;
 
 /**
  * Created by jian.wj on 15-11-25.
  */
 public class TestCursorAdapter extends ModeCursorAdapter {
-    public TestCursorAdapter(Context context, Cursor c, boolean autoRequery, Class<? extends CursorViewHolder> cvh) {
+    public TestCursorAdapter(Context context, Cursor c, boolean autoRequery, Class<? extends BaseViewHolder> cvh) {
         super(context, c, autoRequery, cvh);
     }
 
     @Override
-    public Class<? extends CursorViewHolder> selectHolder(Cursor cursor) {
+    public Class<? extends BaseViewHolder> selectHolder(Cursor cursor) {
         int type = cursor.getInt(cursor.getColumnIndex("groupId"));
 
         return type % 2 == 0 ? CursorHodler.class : TestCursorHodler.class;

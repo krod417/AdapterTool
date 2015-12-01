@@ -8,10 +8,12 @@ import com.databinding.kswording.myapplication.BaseActivity;
 import com.databinding.kswording.myapplication.R;
 import com.databinding.kswording.myapplication.User;
 import com.databinding.kswording.myapplication.databinding.ActivityGridviewBinding;
+import com.databinding.kswording.myapplication.listview.item.UserHolder;
 
 import java.util.ArrayList;
 
 /**
+ * 使用了databinding，目前不要使用这种
  * Created by kswording on 15-10-20.
  */
 public class GridViewActivity extends BaseActivity {

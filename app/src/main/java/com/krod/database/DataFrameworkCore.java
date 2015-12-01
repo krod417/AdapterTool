@@ -56,13 +56,13 @@ public class DataFrameworkCore {
             if (tables != null && tables.size() > 0) {
                 for (Entry<String, Table> e : tables.entrySet()) {
                     Table t = e.getValue();
-                    if (compare(t.getmNewInVersion(), dataBaseOldVersion, newVersion)) {
+                    if (t.getmNewInVersion() > dataBaseOldVersion) {
                         db.execSQL(t.deleteTable());
                         db.execSQL(t.createTable());
                     } else {
                         for (Entry<String, Column> entry : t.columns.entrySet()) {
                             Column f = entry.getValue();
-                            if (compare(f.getmNewInVersion(), dataBaseOldVersion, newVersion)) {
+                            if (f.getmNewInVersion() > dataBaseOldVersion) {
                                 String sql = t.getSQLAddField(f);
                                 if (sql != null) {
                                     db.execSQL(sql);

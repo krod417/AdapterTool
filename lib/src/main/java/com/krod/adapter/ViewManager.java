@@ -19,6 +19,7 @@ package com.krod.adapter;
 import java.util.HashMap;
 
 /**
+ * 样式的管理类
  * Created by wj19901117@gmail.com on 2015/10/28.
  * Description : Collect all model view and build a target view manager.
  */
@@ -50,7 +51,7 @@ public class ViewManager {
 
     private ViewManager addToMap(Class<? extends BaseViewHolder> viewClass, boolean isPinned) {
         if (!viewMap.containsKey(viewClass)) {
-            int viewType = viewMap.size() - 1;
+            int viewType = viewMap.size();
             viewMap.put(viewClass, viewType);
             typeMap.put(viewType, viewClass);
             pinnedMap.put(viewType, isPinned);
